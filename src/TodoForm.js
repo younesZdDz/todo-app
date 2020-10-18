@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import useInputState from './hooks/useInputState';
 
 function TodoForm({addTodo}){
-    const [value, handleChange, reset] = useInputState('');
+    const [value, handleChange, reset] = useInputState();
     return(
         <form onSubmit={(e)=>{
             e.preventDefault();

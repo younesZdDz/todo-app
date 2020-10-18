@@ -7,21 +7,28 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import useToggle from './hooks/useToggle';
+import TodoEditForm from './TodoEditForm'
 
-function Todo({id, title, isDone}){
-
+function Todo({id, title, isDone, deleteTodo, toggleTodo, editTodo}){
+    const [isEditing, toggle] = useToggle();
     return (
         <ListItem>
-            <Checkbox tabIndex={-1} checked={isDone} />
+            {isEditing ? 
+            <TodoEditForm  id={id} title={title} editTodo={editTodo} toggle={toggle}/> : 
+            <>
+            <Checkbox tabIndex={-1} checked={isDone} onClick={() => { toggleTodo(id) }}/>
             <ListItemText style={{textDecoration: isDone ? 'line-through' : 'none'}}>{title}</ListItemText>
             <ListItemSecondaryAction>
-                <IconButton aria-label='Edit'>
+                <IconButton aria-label='Edit' onClick={toggle}>
                     <EditIcon />
                 </IconButton>
-                <IconButton aria-label='Delete'>
+                <IconButton aria-label='Delete'  onClick={()=>{ deleteTodo(id) }}>
                     <DeleteIcon />
                 </IconButton>
             </ListItemSecondaryAction>
+            </>
+            }
         </ListItem>
     );
 }
