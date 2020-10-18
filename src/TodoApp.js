@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,28 +9,12 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm'; 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }));
-
 function TodoApp () {
-    const initialTodos = [
-        {id: 0, title: 'Clean dishes', isDone: false},
-        {id: 1, title: 'Make dinner', isDone: true},
-        {id: 2, title: 'Do Homework', isDone: false},
-        
-    ]
-    const classes = useStyles();
+    const initialTodos = JSON.parse(window.localStorage.getItem('todos') ||  '[]');
     const [todos, setTodos] = useState(initialTodos);
-
+    useEffect(()=>{
+      window.localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
     const addTodo = (todoText) =>{
       setTodos([...todos, {id: uuidv4(), title: todoText, isDone: false}])
     }

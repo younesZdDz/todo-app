@@ -13,7 +13,7 @@ import TodoEditForm from './TodoEditForm'
 function Todo({id, title, isDone, deleteTodo, toggleTodo, editTodo}){
     const [isEditing, toggle] = useToggle();
     return (
-        <ListItem>
+        <ListItem style={{height: '64px'}}>
             {isEditing ? 
             <TodoEditForm  id={id} title={title} editTodo={editTodo} toggle={toggle}/> : 
             <>
