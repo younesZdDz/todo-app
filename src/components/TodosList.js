@@ -1,20 +1,24 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List' 
 import Devider from '@material-ui/core/Divider' 
 import Todo from './Todo';
-import emptyImage from './assets/imgs/empty.jpg'
+import emptyImage from '../assets/imgs/empty.jpg'
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { TodosContext } from '../contexts/todos.context';
 
-function TodoList ({todos, deleteTodo, toggleTodo, editTodo}){
+function TodosList (){
+    
+    const { todos } = useContext(TodosContext);
+
     return (
         <Paper justify="center">
             {todos.length > 0 ? 
                 <List>
                 {todos.map((todo, i) => 
                 <Fragment key={todo.id}>
-                    <Todo id={todo.id} title={todo.title} isDone={todo.isDone}  deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+                    <Todo id={todo.id} title={todo.title} isDone={todo.isDone} />
                     {i < todos.length - 1 && <Devider />}
                 </Fragment>
                 ) }
@@ -27,4 +31,4 @@ function TodoList ({todos, deleteTodo, toggleTodo, editTodo}){
         </Paper>
     )
 }
-export default TodoList;
+export default TodosList;

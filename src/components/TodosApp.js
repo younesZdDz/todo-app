@@ -4,12 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import TodoList from './TodoList';
+import TodoList from './TodosList';
 import TodoForm from './TodoForm'; 
-import useTodosState from './hooks/useTodosState'; 
+import { TodosProvider } from '../contexts/todos.context';
 
-function TodoApp () {
-    const {todos, addTodo, deleteTodo, toggleTodo, editTodo} = useTodosState([]);
+function TodosApp () {
     
     return(
         <Paper style={{
@@ -29,12 +28,14 @@ function TodoApp () {
             </AppBar>
             <Grid container justify="center" style={{marginTop: '1rem'}}>
             <Grid item xs={11} md={8} lg={4}>
-              <TodoForm addTodo={addTodo} />
-              <TodoList todos={todos} deleteTodo={deleteTodo}  toggleTodo={toggleTodo} editTodo={editTodo} /> 
+                <TodosProvider>
+                    <TodoForm />
+                    <TodoList /> 
+                </TodosProvider> 
               </Grid>
             </Grid>
         </Paper>
     );
 
 } 
-export default TodoApp;
+export default TodosApp;

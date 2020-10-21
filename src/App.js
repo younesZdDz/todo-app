@@ -1,10 +1,9 @@
 import React from 'react';
-import TodoApp from './TodoApp';
+import TodosApp from './components/TodosApp';
 
 function App() {
   return (
-<TodoApp />
-
+    <TodosApp />
   );
 }
 
