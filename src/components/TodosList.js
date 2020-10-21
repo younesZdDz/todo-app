@@ -10,7 +10,7 @@ import { TodosContext } from '../contexts/todos.context';
 
 function TodosList (){
     
-    const { todos } = useContext(TodosContext);
+    const todos  = useContext(TodosContext);
 
     return (
         <Paper justify="center">
