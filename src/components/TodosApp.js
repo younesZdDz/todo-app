@@ -25,7 +25,7 @@ function TodosApp() {
 				style={{ height: '64px' }}
 			>
 				<Toolbar>
-					<Typography color="inherit">Todo using hooks</Typography>
+					<Typography color="inherit">Todo list</Typography>
 				</Toolbar>
 			</AppBar>
 			<Grid container justify="center" style={{ marginTop: '1rem' }}>
