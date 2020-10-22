@@ -56,7 +56,7 @@ function Todo({ id, title, isDone }) {
 Todo.propTypes = {
 	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	isDone: PropTypes.func.isRequired
+	isDone: PropTypes.bool.isRequired
 };
 
 export default memo(Todo);
