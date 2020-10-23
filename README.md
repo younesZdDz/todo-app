@@ -1,6 +1,6 @@
 # Todo demo using react 16.13.1
 
-Sample refrence app, showcasing the use of:
+Sample reference app, showcasing the use of:
 
 <ul>
     <li><b>hooks:</b></li>
